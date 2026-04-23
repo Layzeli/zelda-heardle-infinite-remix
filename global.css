@@ -412,8 +412,8 @@ input[type="text"]::-webkit-search-cancel-button {
 
   /* Narrower search input */
   #autoComplete {
-    padding-left: 1.8rem;
-    padding-right: 1.8rem;
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
     font-size: 1.1rem;
   }
 
@@ -426,5 +426,45 @@ input[type="text"]::-webkit-search-cancel-button {
   .song-game {
     max-width: 30%;
     font-size: 1rem;
+  }
+
+  /* ============================
+     MOBILE PLAYER FIXES
+     ============================ */
+
+  .player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .time-label {
+    font-size: 0.9rem;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  .slider-wrapper {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .slider {
+    width: 100%;
+    height: 6px;
+  }
+
+  .slider-thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  .play-button {
+    transform: scale(0.8);
   }
 }
