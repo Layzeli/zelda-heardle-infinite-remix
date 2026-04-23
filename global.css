@@ -1,0 +1,353 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================
+   BASE STYLES (Zelda Heardle)
+   ============================ */
+
+@font-face {
+  font-family: "ZeldaFont";
+  src: url("./Fonts/font.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "ZeldaFont";
+}
+
+body {
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: inherit; /* ZeldaFont from html */
+  color: #fdf6d8;
+  background-color: #081108;
+}
+
+/* Links */
+a {
+  color: #c9b458;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Inputs & buttons */
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+input[type="text"],
+input[type="search"] {
+  background-color: #1a1f16;
+  color: #fdf6d8;
+  border: 2px solid #c9b458;
+  padding: 6px 10px;
+}
+
+input::placeholder {
+  color: #c9b458;
+  opacity: 0.7;
+}
+
+input:disabled {
+  color: #cccccc;
+}
+
+button {
+  background-color: #1a1f16;
+  color: #fdf6d8;
+  border: 2px solid #c9b458;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #2a2f26;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ============================
+   LAYOUT
+   ============================ */
+
+.volume-control {
+  width: 100px;
+  position: relative;
+}
+
+.container {
+  display: grid;
+  gap: 10px;
+  align-items: center;
+}
+
+.container.with-volume {
+  grid-template-columns: 3fr 4fr 7fr 7fr;
+}
+
+.container.without-volume {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item1 { grid-column: 1; }
+.item2 { grid-column: 2; }
+
+.container.with-volume .item3 { grid-column: 3; justify-self: center; }
+.container.with-volume .item4 { grid-column: 4; justify-self: right; }
+
+.container.without-volume .item3 { grid-column: 2; justify-self: center; }
+.container.without-volume .item4 { grid-column: 3; justify-self: right; }
+
+/* ============================
+   SLIDER
+   ============================ */
+
+.slider {
+  position: relative;
+  height: 10px;
+  background-color: grey;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.slider-fill {
+  position: absolute;
+  height: 100%;
+  background-color: rgb(188, 245, 135);
+  border-radius: 2px;
+}
+
+.slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px #d3d3d3;
+}
+
+/* ============================
+   AUTOCOMPLETE LIST
+   ============================ */
+
+[id^="autoComplete_list"] {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+[id^="autoComplete_list"]::-webkit-scrollbar { width: 15px; }
+[id^="autoComplete_list"]::-webkit-scrollbar-track { background: #555; }
+[id^="autoComplete_list"]::-webkit-scrollbar-thumb { background: #f1f1f1; }
+[id^="autoComplete_list"]::-webkit-scrollbar-thumb:hover { background: #888; }
+
+/* ============================
+   ZELDA HEARDLE — SONG LIST
+   ============================ */
+
+/* Remove list bullets */
+#music-list,
+#music-list ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* Main container */
+#music-list {
+  font-size: 14px;
+  display: grid;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Song row */
+.song-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  padding: 6px 0;
+  line-height: 1.6rem;
+  overflow: visible;
+}
+
+/* Song (left) */
+.song-link,
+.song-link:visited {
+  flex: 1;
+  text-align: left;
+  margin-right: 20px;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+.song-link:hover {
+  text-decoration: underline;
+}
+
+/* Game (right) */
+.song-game {
+  flex: 1;
+  text-align: right;
+  opacity: 0.8;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ============================
+   MODAL — SONG LIST
+   ============================ */
+
+.songlist-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 9999;
+  background-color: var(--custom-bg, #081108);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.songlist-modal ul {
+  display: block;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.song-separator {
+  border-top: 2px solid #ccc;
+  margin: 20px 0;
+  list-style: none;
+  height: 0;
+}
+
+/* ============================
+   TEXTS
+   ============================ */
+
+h1.text-3xl {
+  font-size: 3rem;
+  line-height: 2.6rem;
+}
+
+.text-custom-line.text-sm {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+}
+
+.text {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+
+/* Proportion adjustments in Song List */
+.song-link {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.song-game {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+/* Stats */
+.text-xl {
+  font-size: 2rem;
+  line-height: 2.2rem;
+}
+
+/* ============================
+   MODAL SCROLLBARS
+   ============================ */
+
+.modal-background,
+.modal-background * {
+  scrollbar-width: none;
+}
+
+.modal-background::-webkit-scrollbar,
+.modal-background *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* ============================
+   INPUT FIXES
+   ============================ */
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input[type="text"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* ============================
+   TEXT FIXES — SUPPORT / MODALS
+   ============================ */
+
+.songlist-modal p.mb-3,
+.modal-background .mb-3,
+.mb-3 {
+  font-family: "ZeldaFont";
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.03em;
+}
+
+/* ============================
+   SEARCH BAR FIXES
+   ============================ */
+
+#autoComplete {
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+}
