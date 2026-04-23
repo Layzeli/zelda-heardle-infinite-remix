@@ -351,3 +351,80 @@ input[type="text"]::-webkit-search-cancel-button {
   padding-left: 2.2rem;
   padding-right: 2.2rem;
 }
+
+/* ============================
+   MOBILE RESPONSIVE FIXES
+   ============================ */
+
+@media (max-width: 600px) {
+
+  /* Reduce global font sizes */
+  html {
+    font-size: 12px;
+  }
+
+  /* Smaller title size */
+  h1.text-3xl {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+  }
+
+  /* Main container becomes a single column */
+  .container.with-volume {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .container.without-volume {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  /* Force all grid items into the same column */
+  .item1, .item2, .item3, .item4 {
+    grid-column: 1 !important;
+    justify-self: center;
+  }
+
+  /* Smaller and centered modal */
+  .songlist-modal {
+    width: 95%;
+    max-width: 95%;
+    padding: 12px;
+  }
+
+  /* Responsive result image (SoundCloud / cover art) */
+  .result-image, 
+  .songlist-modal img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Smaller music slider */
+  .slider {
+    height: 6px;
+  }
+
+  .slider-thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Narrower search input */
+  #autoComplete {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    font-size: 1.1rem;
+  }
+
+  /* Song list: narrower columns */
+  .song-link {
+    max-width: 70%;
+    font-size: 1.1rem;
+  }
+
+  .song-game {
+    max-width: 30%;
+    font-size: 1rem;
+  }
+}
