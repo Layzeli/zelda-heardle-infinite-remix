@@ -3414,7 +3414,7 @@ var app = (function () {
         c() {
           (t = w("p")),
             (t.textContent =
-              "Hyaa! There was an error loading the player. Please reload and try again."),
+              "Ugh! There was an error loading the player. Please reload and try again."),
             (n = x()),
             (r = w("div")),
             Q(s.$$.fragment),
@@ -3656,7 +3656,7 @@ var app = (function () {
             p(h, f),
             p(f, m),
             p(m, v);
-          if (!/Mobi/i.test(window.navigator.userAgent)) {
+          
             f.classList.add("with-volume");
             p(f, volumeDiv), p(volumeDiv, volumeIcon), p(volumeIcon, volumeSvg);
 
@@ -3812,14 +3812,33 @@ var app = (function () {
               );
             });
 
+            // === TOUCH EVENTS (para móvil) ===
+
+            slider.addEventListener("touchstart", (e) => {
+              isDragging = true;
+              const touch = e.touches[0];
+              updateSlider(touch.clientX);
+              e.preventDefault();
+            });
+
+            slider.addEventListener("touchmove", (e) => {
+              if (!isDragging) return;
+              const touch = e.touches[0];
+              updateSlider(touch.clientX);
+              e.preventDefault();
+            });
+
+            slider.addEventListener("touchend", () => {
+              isDragging = false;
+            });
+
+
             // Initialize slider
             updateSlider(
               slider.getBoundingClientRect().left +
                 (50 / 100) * slider.offsetWidth
             );
-          } else {
-            f.classList.add("without-volume");
-          }
+
           p(v, k),
             p(f, b),
             p(f, S),
