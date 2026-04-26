@@ -42,10 +42,10 @@ You can play it here:
 
 This project is based on:
 
-- **Mario Heardle Infinite** (por NinjiGalaxy)  
+- **Mario Heardle Infinite** (by NinjiGalaxy)  
   Original codebase used as the foundation for this version. Mario Heardle was built on Etrian Odyssey Heardle Infinite by Beigent0. That project originates from a Heardle template that can be traced back to WJSN Heardle (created by jeroldcamacho), which in turn was a fan-made clone of the **original Heardle**, later shut down after being acquired by Spotify.
 
-- **Zelda Heardle** (por DarkDecay)  
+- **Zelda Heardle** (by DarkDecay)  
   Source of song links and soundtrack references.
 
 Additional contributions:
