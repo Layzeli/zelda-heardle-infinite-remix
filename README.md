@@ -34,7 +34,7 @@ This project was created for fun, with no commercial intent, and as a personal m
 This project is available on **GitHub Pages**.
 You can play it here:
 
-*(URL will be added once published)*
+*https://layzeli.github.io/zelda-heardle-infinite-remix/*
 
 ---
 
