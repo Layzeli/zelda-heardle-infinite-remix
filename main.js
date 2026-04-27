@@ -3562,7 +3562,7 @@ var app = (function () {
               : e[2].maxAttempts * e[2].attemptInterval
             : e[3]
         ) + "",
-      N = !e[12] && 1 == e[0] && tt();
+      N = tt();
     function H(e, t) {
       return e[4].isPrime ? rt : nt;
     }
@@ -3580,6 +3580,12 @@ var app = (function () {
         },
       })),
       D.$on("click", function () {
+        const iframe = document.querySelector("iframe");
+        if (window.SC && iframe) {
+          const widget = SC.Widget(iframe);
+          widget.play();
+        }
+
         s(e[18] ? e[6] : e[5]) && (e[18] ? e[6] : e[5]).apply(this, arguments);
       }),
       {
@@ -3885,7 +3891,7 @@ var app = (function () {
           q(D.$$.fragment, e), (P = !1);
         },
         d(e) {
-          N && N.d(e), e && y(t), e && y(n), W.d(), e && y(u), e && y(c), te(D);
+            N && N.d(e), e && y(t), e && y(n), W.d(), e && y(u), e && y(c), te(D);
         },
       }
     );
